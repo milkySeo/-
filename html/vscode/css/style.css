@@ -1,0 +1,31 @@
+p{
+    font-size: 35px;
+}
+p:nth-of-type(2){
+    color : cadetblue;
+
+}
+p:nth-of-type(3){
+    color : aqua;
+    font-size: 30px;
+}
+p:nth-of-type(4){
+    color : rgb(255, 208, 0);
+    font-size: 25px;
+}
+p:nth-of-type(5){
+    color : rgb(175, 10, 10);
+    font-size: 20px;
+}
+p:nth-of-type(6){
+    color : rgb(233, 0, 0);
+    background: blueviolet;
+}
+p:nth-of-type(7){
+    color : rgb(0, 4, 253);
+    background-color: black;
+}
+p:nth-of-type(8){
+    color : rgb(21, 255, 0);
+    background: darkkhaki;
+}

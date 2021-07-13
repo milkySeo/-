@@ -1,0 +1,65 @@
+.wrapper {
+    width: 980px;
+    margin: 30px auto;
+}
+.outline {
+    position: relative;
+    padding: 3px 0 13px 4px;
+    background: #fff;
+    border: 1px solid #d6d6d6;
+    overflow: hidden;
+}
+.red {
+    background: lightpink;
+}
+.shape {
+    width: 305px;
+    height: 200px;
+    margin: 12px 0px 0px 11px;
+}
+.inline {
+    display: inline-block;
+}
+
+.blue {
+    background: lightblue;
+}
+
+.green {
+    background-color: lightgreen;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.boxItem {
+    height: 300px;
+    float: left;
+    position: relative;
+    margin: 10px 0 0 10px;
+    background: #fff;
+    border: 1px solid #d6d6d6;
+}
+.boxItem:hover {
+    border: 1px solid rgb(84, 141, 247);
+}
+
+.boxItem:hover .btnImg{
+    width: 65px;
+    background-position: 0px -370px;
+}
+
+.btnImg{
+    display: block;
+    text-indent: -9999em;
+    width:65px;
+    height:30px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    background: url("//img1a.coupangcdn.com/image/coupang/main/bg_main_sprite_180103.png");
+    background-position: 0px -404px; 
+   
+
+}

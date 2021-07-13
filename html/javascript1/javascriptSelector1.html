@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <ul>
+        <li>html</li>
+        <li>CSS</li>
+        <li>JAVASCRIPT</li>
+    </ul>
+
+    <ol>
+        <li>html</li>
+        <li>CSS</li>
+        <li>JAVASCRIPT</li>
+    </ol>
+
+    <a href="./javascriptSelector2.html">2번셀렉터로 이동</a>
+
+    <script>
+        // var lis = document.getElementsByTagName('li');
+        // for(var i =0;i<lis.length;i++){
+        //     lis[i].style.color='red';
+        // }
+
+        // var ol = document.getElementsByTagName('ol')[0];
+        // var lis2=ol.getElementsByTagName('li');
+        // for(var i = 0; i<lis2.length;i++){
+        //     lis2[i].style.color='blue';
+        // }
+        $('li').css('color','red');
+        $('ol>li').css('color','blue');
+    </script>
+</body>
+</html>

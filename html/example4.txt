@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+	<title>HTML을 함께 배워봅시다.</title>
+</head>
+<body>
+<p>
+	<b>강조</b>를 위한 텍스트 문구입니다. <br>
+	<strong>강조</strong>를 위한 텍스트 문구입니다.
+</p>
+<p>
+	<i>이탤릭체</i>를 위한 텍스트문구입니다. <br>
+	<em>이탤릭체</em>를 위한 텍스트문구입니다. 
+</p>
+<p>
+	<mark>하이라이팅</mark>를 위한 텍스트문구입니다. 
+</p>
+<p>
+	<del>삭제효과</del>를 위한 텍스트문구입니다. 
+</p>
+<p>
+	<ins>삽입효과</ins>를 위한 텍스트문구입니다. 
+</p>
+<p>
+	3<sup>2</sup> = 0<br>
+	CO<sub>2</sub>
+</p>

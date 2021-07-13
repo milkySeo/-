@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    p {
+        font-size: 20px;
+    }
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    </style>
+    
+</head>
+<body>
+    <body>
+        <h1>
+            브라우저 창 크기 알아보기
+        </h1>
+        
+        <!-- 첫번째 p -->
+        <p></p>
+    
+        <button onclick="alertBtn()">알림 버튼입니다.</button>
+
+
+        <br>  <!-- 줄바꿈 -->
+        <br>
+
+
+        <div id="box"></div>
+        <!-- 두번째 p -->
+        <p></p>
+    
+    
+    
+        <button onclick="newOpenBtn()">네이버로 갑니다.</button>
+    
+        <button onclick="goBtn()">네이버로 갑니다.</button>
+    
+        <button onclick="goPage()">페이지 이동하기</button>
+    
+        <button onclick="goForwordPage()">앞 페이지 이동</button>
+    
+    
+        <br>
+        <br>
+        <br>
+
+        <!-- 세번째 p -->
+        <p></p>
+    
+        <br>
+        <br>
+        <br>
+    
+        <!-- 네번째 p -->
+        <p></p>
+    
+        <br>
+        <br>
+    
+        <button onclick="confirmBtn()">확인 버튼입니다.</button>
+    
+        <br>
+
+        <h3>선택에 따라 값을 변경 할 수 있습니다.</h3>
+        <button onclick="confirmBtnA()">확인 버튼입니다.</button>
+        <p id="confirmTxt"></p>
+    
+        <br>
+        <br>
+
+        <button onclick="nameBtn()">이름을 입력해주세요.</button>
+        <p id="nameTxt"></p>
+    
+        <br>
+        <br>
+        <button onclick="timeAlert()">2초 뒤에 알림창이 발생합니다.</button>
+    
+        <br>
+        <br>
+        <button onclick="intervalDate()">1초마다 시간 변경</button>
+        <button onclick="intervalDateCancle()">취소</button>
+        <button onclick="intervalDateNew()">1초마다 시간 변경 (시간 변경)</button>
+        <button onclick="intervalDateNewCancle()">취소</button>
+        <p id="date"></p>
+        <p id="date2"></p>
+    
+        <!-- -------------------------------------------------------------------- -->
+        <script>
+            var windowWidth = innerWidth;
+            var windowHeight = innerHeight;
+    
+            var textP = document.getElementsByTagName('p');
+            textP[0].innerHTML = "웹 브라우저 너비는 " + windowWidth + "픽셀이고 높이는 " + windowHeight +"픽셀입니다."
+    
+            function alertBtn() {
+                alert('윈도우 alert 창입니다.');
+            }
+    
+            var boxSize = document.getElementById('box');
+            var boxSizeWidth = boxSize.offsetWidth; //
+            var boxSizeHeight = boxSize.offsetHeight;
+    
+            textP[1].innerHTML = "div 너비는 " + boxSizeWidth + "픽셀이고 높이는 " + boxSizeHeight + " 입니다."
+    
+
+            var screenWidthSize = screen.width;
+            var screenHeightSize = screen.height;
+    
+            textP[2].innerHTML = "디스플레이 화면의 너비는 " + screenWidthSize + "픽셀이고 높이는 " + screenHeightSize + " 입니다."
+    
+            var browserWidthSize = window.outerWidth;
+            var browserHeightSize = window.outerHeight;
+    
+            textP[3].innerHTML = "현재 브라우저 창의 너비는 " + browserWidthSize + "픽셀이고 높이는 " + browserHeightSize + " 입니다."
+    
+
+            function newOpenBtn() {
+                window.open('https://naver.com');
+            }
+    
+    
+            function goBtn() {
+                location.href = 'https://naver.com';
+            }
+    
+            function goPage() {
+                location.href = './goback.html';
+            }
+    
+            function goForwordPage() {
+                window.history.forward();
+            }
+    
+            function confirmBtn() {
+                window.confirm('선택해주세요.');
+            }
+    
+            function confirmBtnA() {
+                var confirmTxt;
+                if (confirm("선택해주세요.") == true) {
+                    confirmTxt = "확인을 누르셨습니다."
+                } else {
+                    confirmTxt = "취소를 누르셨습니다."
+                }
+                document.getElementById('confirmTxt').innerHTML = "당신은 " + confirmTxt + ""
+            }
+    
+            function nameBtn() {
+                var inputStr = prompt('이름을 입력해주세요 :', ' ');
+                if(inputStr != null) {
+                    document.getElementById('nameTxt').innerHTML = "당신의 이름은 " + inputStr + " 입니다.";
+                }
+            }
+            
+            function timeAlert() {
+                setTimeout(alertBtn, 1000);
+            }
+            
+            function setToday() {
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = ("0" + (1 + date.getMonth())).slice(-2);
+                var day = ("0" + date.getDate()).slice(-2);
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+    
+                return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+            }
+    
+            var timeoutID;
+            var timeoutNewID;
+            function intervalDate() {
+                timeoutID = setInterval(printCurrentDate, 100);
+            }
+            
+            function intervalDateCancle() {
+                clearInterval(timeoutID);
+            }
+    
+            function intervalDateNew() {
+                timeoutNewID = setInterval(printCurrentDateNew, 100);
+            }
+    
+            function intervalDateNewCancle() {
+                clearInterval(timeoutNewID);
+            }
+    
+            
+            function printCurrentDate() {
+                document.getElementById('date').innerHTML = new Date() + "<br>";
+            }
+            function printCurrentDateNew() {
+                document.getElementById('date2').innerHTML = setToday() + "<br>";
+            }
+            
+        </script>
+    
+    </body>
+</body>
+</html>

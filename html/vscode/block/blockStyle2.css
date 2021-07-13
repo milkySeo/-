@@ -1,0 +1,29 @@
+body{
+    margin: 0%;
+}
+.box{
+    width: 300px;
+    height: 300px;
+    margin: 30px;
+    padding: 20px;
+    border:2px solid rgb(0, 0, 43);
+    display: inline-block;
+}
+.imgBox {
+    width: 100%;
+    margin: 0;
+}
+.imgBox img {
+    width: 100%;
+}
+.imgBox figcaption {
+    text-align: center;
+    color: darkblue;
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+.p{
+    font-size: 15px;
+    color: skyblue;
+}

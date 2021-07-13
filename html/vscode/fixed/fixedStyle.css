@@ -1,0 +1,17 @@
+        body {
+            height: 200vh;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid lightcoral;
+            margin: 20px;
+            line-height: 200px;
+            text-align: center;
+        }
+        .fixed {
+            position: fixed;
+            top: 20px;
+            left: 300px;
+        }
+    

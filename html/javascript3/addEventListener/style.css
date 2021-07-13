@@ -1,0 +1,21 @@
+div{
+    width: 200px;
+    height:200px;
+    border: 1px solid black;
+}
+
+ul{
+    list-style: none;
+    padding:0;
+    margin:30px 0;
+    display: flex;
+}
+.btn{
+    padding: 10px 40px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.btn.active, .btn:hover{
+    background-color: teal;
+}

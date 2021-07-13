@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="testStyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="animated bounceInDown">
+        <ul>
+          <li>
+            <a href="#profile">
+              <div class="fa fa-user"></div>
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="#message">
+              <div class="fa fa-envelope"></div>
+              Messages
+              <span class="badge right">12</span>
+            </a>
+          </li>
+          <li class="sub-menu">
+            <a href="#settings">
+              <div class="fa fa-gear"></div>
+              Settings
+              <div class="fa right fa-caret-down"></div>
+            </a>
+            <ul style="display: none;">
+              <li>
+                <a href="#settings">
+                  Account
+                </a>
+              </li>
+              <li>
+                <a href="#settings">
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a href="#settings">
+                  Secruity &amp; Privacy
+                </a>
+              </li>
+              <li>
+                <a href="#settings">
+                  Password
+                </a>
+              </li>
+              <li>
+                <a href="#settings">
+                  Notification
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="#message">
+              <div class="fa fa-question-circle"></div>
+              Help
+              <div class="fa fa-caret-down right"></div>
+            </a>
+            <ul style="display: none;">
+              <li>
+                <a href="#settings">
+                  FAQ's
+                </a>
+              </li>
+              <li>
+                <a href="#settings">
+                  Submit a Ticket
+                </a>
+              </li>
+              <li>
+                <a href="#settings">
+                  Network Status
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#message">
+              <div class="fa fa-sign-out"></div>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <script>
+            $('.sub-menu ul').hide();
+            $(".sub-menu a").click(function () {
+            $(this).parent(".sub-menu").children("ul").slideToggle("100");
+            $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+            });
+      </script>
+
+</body>
+</html>

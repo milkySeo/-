@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>html</li>
+        <li>CSS</li>
+        <li class="active">JAVASCRIPT</li>
+    </ul>
+    <a href="./javascriptSelector5.html">5번셀렉터로 이동</a>
+    <script>
+        //querySelector은 맨 첫번째것만 반환
+        var lis = document.querySelector('li');
+        lis.style.color='red';
+
+        var li = document.querySelector('.active');
+        li.style.color='blue';
+    </script>
+</body>
+</html>

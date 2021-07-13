@@ -1,0 +1,39 @@
+.shape{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    /*글자 가운데 두고싶으면 전체 박스높이랑 똑같은치수 쓰면됨*/
+}
+
+.block{
+    display: block;
+}
+
+.inline{
+    display: inline;
+}
+
+.inlineBlock{
+    display: inline-block;
+}
+
+.flex{
+    display: flex;
+}
+
+.margin30{
+    margin-top: 30px;
+}
+
+.red{
+    background: lightpink;
+}
+
+.blue{
+    background: lightblue;
+}
+
+.green{
+    background: lightgreen;
+}

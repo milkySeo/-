@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+	<title>HTML을 함께 배워봅시다.</title>
+</head>
+<body>
+	<p>
+	Celebrity
+
+	세상의 모서리
+	구부정하게 커버린
+	골칫거리 outsider
+
+	걸음걸이, 옷차림,
+	이어폰 너머 playlist
+	음악까지 다 minor
+	</p>
+	<p>
+	Celebrity <br>
+	<br>
+	세상의 모서리 <br>
+	구부정하게 커버린<br>
+	<br>
+	걸음걸이, 옷차림,<br>
+	이어폰 너머 playlist<br>
+	음악까지 다 minor
+	</p>
+	<pre>
+Celebrity
+
+	세상의 모서리
+	구부정하게 커버린
+	골칫거리 outsider
+
+	걸음걸이, 옷차림,
+	이어폰 너머 playlist
+	음악까지 다 minor
+	</pre>
+	<p>
+	Celebrity <br>
+	<hr>
+	세상의 모서리 <br>
+	구부정하게 커버린<br>
+	<hr>
+	걸음걸이, 옷차림,<br>
+	이어폰 너머 playlist<br>
+	음악까지 다 minor
+	</p>
+</body>
+</html>	

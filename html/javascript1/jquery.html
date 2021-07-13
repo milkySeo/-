@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+    <button onclick="document.body.className='dark'">검은색 화면 만들기</button>
+    <button onclick="document.body.className='white'">하얀색 화면 만들기</button>
+
+    <div class="container">
+        <button onclick="document.getElementById('textChange').innerHTML='내용이 변경되었습니다.'">내용 바꾸기</button>
+        <button onclick="document.getElementById('textChange').innerHTML='이 내용이 변경됩니다.'">내용 돌리기</button>
+        <p id="textChange">이 내용이 변경됩니다.</p>
+    </div>
+
+    <div class="container">
+        <button onclick="document.getElementById('imgChange').src = 'http://image.dongascience.com/Photo/2017/03/14900752352661.jpg'">강아지</button>
+        <button onclick="document.getElementById('imgChange').src = 'https://imgnn.seoul.co.kr/img/upload/2020/10/12/SSI_20201012165045_V.jpg'">고양이</button>
+        <div>
+            <img id="imgChange" src="https://imgnn.seoul.co.kr/img/upload/2020/10/12/SSI_20201012165045_V.jpg" alt="">
+        </div>
+
+        <div class="container">
+            <button onclick="document.getElementById('colorChange').style.color = 'blue'">글자색바꾸기</button>
+            <button onclick="document.getElementById('colorChange').style.color = 'black'">글자색 돌리기</button>
+            <p id="colorChange">이 내용이 변경됩니다.</p>
+        </div>
+    </div>
+</body>
+</html>

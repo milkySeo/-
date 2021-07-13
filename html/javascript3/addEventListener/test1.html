@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul>
+        <li class="btn active">
+            메뉴 1
+        </li>
+        <li class="btn">
+            메뉴 2
+        </li>
+        <li class="btn">
+            메뉴 3
+        </li>
+        <li class="btn">
+            메뉴 4
+        </li>
+        <li class="btn">
+            메뉴 5
+        </li>
+    </ul>
+    <div id = boxContainer></div>
+    <p id = txtBox>div안에서 마우스가 나갔습니다.</p>
+    
+    <script>
+        var menu = document.getElementsByTagName('ul');
+        var menuItem = menu[0].getElementsByTagName('li');
+        for(var i = 0; i< menuItem.length; i++){
+            menuItem[i].addEventListener('click', activeFunction)
+        }
+
+        function activeFunction(){
+            var current = document.getElementsByClassName('active');
+            if(current.length >0){
+                current[0].className = current[0].className.replace(' active', '');
+            }
+            this.className +=' active';
+        }
+
+        // ------------------------------------------------------------------
+        var box = document.getElementById('boxContainer');
+        box.addEventListener('mouseover', mouseoverBox);
+        box.addEventListener('mouseout',mouseoutBox);
+
+        function mouseoverBox(){
+            document.getElementById('txtBox').innerHTML = "div안에 마우스가 들어왔습니다.";
+        }
+        function mouseoutBox(){
+            document.getElementById('txtBox').innerHTML= "div안에서 마우스가 나갔습니다.";
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+0602
+<pre> 작성한 문서 그대로 보여주는것
+<br> 줄바꿈
+<hr> 선긋기
+
+//텍스트 서식
+강조 : <b> or <strong>
+이탤릭체 : <i> <em>
+하이라이팅 : <mark>
+삭제효과 : <del>
+삽입효과 : <ins>
+첨자 <sup> - 위첨자 <sub> - 아래첨자
+target="_blank" 새창에서 열림
+
+//리스트
+순서없는 리스트 점점으로 표시
+<ul>
+	<li>---</li>
+</ul>
+순서있는 리스트 -> 1. 2. 3. 4. 으로 표시
+<ol>
+	<li>---</li>
+</ol>
+
+------------------------------------------------------------------------------------------
+
+
+innerWidth ->웹브라우저 메뉴바같은거 제외한 너비 
+innerHeight -> 웹브라우저 메뉴바같은거 제외한 높이
+
+div변수.offsetWidth ->div너비
+div변수.offsetHeight ->div높이
+
+screen.width ->컴퓨터 화면 전체 너비
+screen.height ->컴퓨터 화면 전체 높이
+
+window.outerWidth -> 웹브라우저 메뉴바 포함 너비 +16
+window.outerHeight -> 웹브라우저 메뉴바 포함 높이 +88
+
+window.open('..url..'); ->새창으로 url열기
+location.href = '..url..'; ->그냥 url열기(새창으로x)
+location.href = '/goback.html' -> 뒤로가기
+window.history.forward(); -> 앞페이지로가기
+
+function btnName(){
+	alert('..알람창에 띄울 텍스트..');
+}  --> 확인버튼만 나옴
+
+function  btnName(){
+	window.confirm('..선택창에 띄울 텍스트..');
+}  --> 확인, 취소버튼 나옴 
+        확인버튼 누르면 true
+        취소버튼 누르면 false
+
+prompt('창에 띄울 기본 텍스트', '입력창에 기본입력값')
+
+setTimeout(function? , 1/1000초 단위뒤에 실행해라)
+
+setInterval(function?, 1/1000초단위로 실행해라)
+
+--------------------------------------------------------------
+addEventListener('이벤트 종류', '함수 이름')
+ 이벤트 종류 : click, focus, keydown, keyup, mousedown(클릭했을때),
+ mouseout(마우스가 특정개체 밖으로 나갔을때), mouseover(마우스가 특정객체 위로 올려졌을때),
+mousemove(마우스가 움직였을때), mouseup(마우스에서 손을 땟을때)
+
+
+---------------------------------------
+$("~~").siblings() -> 형제요소들 다 변경
+         .next()-> 형제요소중 다음꺼 하나
+         .nextall()-> 형제요소중 다음꺼 다
+         .prev()-> 형제요소중 전에꺼 하나
+         .prevall()->형제요소중 전에꺼 다
+         .append()-> 뒤에 추가
+         .prepend()-> 앞에 추가
+         .before()-> 태그한거 전에
+         .after()-> 태그한거 후에
+
+	.text() -> 문구변경만 할때
+	.html() -> 태그까지 변경할때
+
+
+----------------------------------------------------
+$("태그이름[title:~~~~]")
+$("li:first")
+$("li:eq(5)").~~~ ->인덱스5번에만
+.attr("옵션추가할 요소이름(ex. 클래스이름 or 타이틀이름)"  ,"추가할옵션")
