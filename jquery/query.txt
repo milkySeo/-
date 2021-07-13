@@ -1,0 +1,363 @@
+orcl		<==�꾩뿭�곗씠�곕쿋�댁뒪 �대쫫
+12341234	<==鍮꾨�踰덊샇
+c:\oracle	<==寃쎈줈�꾩튂
+
+
+
+create user newjob identified by newjob1234;
+grant connect,resource to newjob;
+
+grant dba to newjob;
+alter user newjob default role all;
+grant create table to newjob;
+grant unlimited tablespace to newjob;
+grant create session to newjob;
+grant create view to newjob;
+
+
+create table mygrade (
+	st_name VARCHAR2(20),
+	korean NUMBER(3),
+	english NUMBER(3),
+	math NUMBER(3)
+)
+
+INSERT INTO mygrade ( st_name, korean, english, math ) VALUES ( '�띻만��','90' ,'96','76');
+INSERT INTO mygrade ( st_name, korean, english, math ) VALUES ( '�띻만��','70' ,'80','85');
+
+select * from MYGRADE 
+select * from MYGRADE where math > 70
+
+update MYGRADE
+set
+english = 95
+where ST_NAME = '�띻만��'
+
+
+delete from MYGRADE
+where st_name = '�띻만��'
+
+select u.st_name, u.ADDRESS , g.KOREAN , g.ENGLISH ,g.MATH
+from 
+MYGRADE g , MYUSER u
+where g.st_id(+) = u.st_id
+
+select u.st_name, u.ADDRESS , g.KOREAN , g.ENGLISH ,g.MATH
+from 
+MYGRADE as g right join MYUSER as u
+on g.st_id = u.st_id
+
+
+
+PRIMARY key
+
+INSERT INTO MYUSER (ST_NAME,HP,SEX,ADDRESS,ST_ID)
+VALUES ('�ν깮��','01044445555','f','���꾩떆 以묎뎄','S003');
+
+SELECT  SUM(KOREAN),AVG(KOREAN),SUM(ENGLISH),AVG(ENGLISH) ,SUM(MATH),AVG(MATH) ,ST_ID FROM MYGRADE GROUP BY ST_ID;
+SELECT  SUM(KOREAN),AVG(KOREAN),SUM(ENGLISH),AVG(ENGLISH) ,SUM(MATH),AVG(MATH) ,ST_ID FROM MYGRADE GROUP BY ST_ID order by ST_ID DESC;
+
+
+
+
+CREATE OR REPLACE VIEW V_ST_INFO AS
+select u.st_name, u.ADDRESS ,u.sex,u.hp, g.KOREAN , g.ENGLISH ,g.MATH
+from 
+MYGRADE g , MYUSER u
+where g.st_id(+) = u.st_id
+
+
+CREATE OR REPLACE VIEW V_ST_INFO AS
+select u.st_name, u.ADDRESS , g.KOREAN , g.ENGLISH ,g.MATH
+from 
+MYGRADE as g right join MYUSER as u
+on g.st_id = u.st_id
+
+
+
+CREATE OR REPLACE FUNCTION F_MYTOTAL
+    RETURN NUMBER
+IS
+   ret NUMBER(5);
+BEGIN
+  ret := 60;
+RETURN ret;
+ 
+END;
+
+
+DELIMITER $$
+CREATE FUNCTION F_MYNAME(p_st_id VARCHAR(10)) RETURNS varchar(100)
+BEGIN
+
+   DECLARE ret varchar(100);
+   SET ret = null;
+   
+   SELECT st_name  INTO ret from myuser where st_id = p_st_id;   
+   
+   RETURN ret;
+
+END $$
+
+DELIMITER ;
+
+select F_MYNAME('S001') from myuser limit 1
+
+
+
+create or replace FUNCTION F_MYTOTAL(p_st_id varchar)
+    RETURN NUMBER
+IS
+   ret NUMBER(5);
+BEGIN
+  
+	SELECT  SUM(KOREAN)+SUM(ENGLISH)+SUM(MATH) into ret FROM MYGRADE
+	where ST_ID = p_st_id
+	GROUP BY ST_ID; 
+
+RETURN ret;
+ 
+END;
+
+
+SELECT  SUM(KOREAN)+SUM(ENGLISH)+SUM(MATH),ST_ID FROM MYGRADE GROUP BY ST_ID;
+
+
+
+
+CREATE OR REPLACE PROCEDURE MY_PROC
+(
+   P_ST_ID IN VARCHAR2,
+   P_KOREAN IN NUMBER,
+   P_ENGLISH IN NUMBER,
+   P_MATH IN NUMBER
+)
+IS
+
+BEGIN
+
+INSERT INTO MYGRADE (ST_ID, KOREAN, ENGLISH, MATH)
+VALUES (P_ST_ID, P_KOREAN, P_ENGLISH, P_MATH);
+COMMIT;
+
+END MY_PROC;
+
+
+EXEC MY_PROC('S001',90,90,90);
+
+
+DELIMITER $$
+ CREATE PROCEDURE MY_PROC(
+	IN P_ST_ID VARCHAR(4),
+	IN P_KOREAN int(4),
+	IN P_ENGLISH int(4),
+	IN P_MATH int(4)
+ 
+ )
+	BEGIN
+
+	INSERT INTO MYGRADE (ST_ID, KOREAN, ENGLISH, MATH)
+	VALUES (P_ST_ID, P_KOREAN, P_ENGLISH, P_MATH);
+
+	END $$
+DELIMITER ;
+
+CALL MY_PROC('S001',90,90,90);
+
+
+
+
+
+//S001 20 20 20
+//S002 40 40 40
+CREATE OR REPLACE PROCEDURE MY_PROCIF
+(
+   P_ST_ID IN VARCHAR2
+)
+IS
+
+BEGIN
+
+IF P_ST_ID = 'S001' THEN
+	INSERT INTO MYGRADE (ST_ID, KOREAN, ENGLISH, MATH)
+	VALUES (P_ST_ID, 20, 20, 20);
+END IF;
+
+IF P_ST_ID = 'S002' THEN
+	INSERT INTO MYGRADE (ST_ID, KOREAN, ENGLISH, MATH)
+	VALUES (P_ST_ID, 40, 40, 40);
+END IF;
+
+
+
+COMMIT;
+
+END MY_PROCIF;
+
+EXEC MY_PROCIF('S001');
+
+
+//S001 20 30 40
+CREATE OR REPLACE PROCEDURE MY_PROCFOR
+(
+   P_ST_ID IN VARCHAR2,
+   P_KOREAN IN NUMBER,
+   P_ENGLISH IN NUMBER,
+   P_MATH IN NUMBER
+)
+IS
+
+BEGIN
+
+FOR i in 1..10 LOOP
+	INSERT INTO MYGRADE (ST_ID, KOREAN, ENGLISH, MATH)
+	VALUES (P_ST_ID, P_KOREAN, P_ENGLISH, P_MATH);
+
+END LOOP;
+
+
+COMMIT;
+
+END MY_PROCFOR;
+
+EXEC MY_PROCFOR('S001',90,90,90);
+
+
+
+
+
+
+CREATE OR REPLACE PACKAGE st_ctrl AS
+	PROCEDURE disp_grade (p_st_id IN  VARCHAR2) ;
+	PROCEDURE insert_grade (   P_ST_ID IN VARCHAR2,
+							   P_KOREAN IN NUMBER,
+							   P_ENGLISH IN NUMBER,
+							   P_MATH IN NUMBER) ;
+END st_ctrl;
+
+CREATE OR REPLACE PACKAGE BODY st_ctrl AS
+	PROCEDURE disp_grade (p_st_id IN  VARCHAR2)
+	IS
+
+	CURSOR jumsus IS
+	select korean,english,math from mygrade
+	where st_id = p_st_id;
+
+	BEGIN
+
+		FOR  cs  IN jumsus LOOP
+			DBMS_OUTPUT.PUT_LINE('援�뼱 : ' || cs.korean);
+			DBMS_OUTPUT.PUT_LINE('�곸뼱 : ' || cs.english);
+			DBMS_OUTPUT.PUT_LINE('�섑븰 : ' || cs.math);
+
+		END LOOP;
+
+		EXCEPTION
+		WHEN OTHERS THEN
+			DBMS_OUTPUT.PUT_LINE(SQLERRM||'�먮윭 諛쒖깮 ');
+
+	END disp_grade;
+	
+
+	PROCEDURE insert_grade (	P_ST_ID IN VARCHAR2,
+								P_KOREAN IN NUMBER,
+								P_ENGLISH IN NUMBER,
+								P_MATH IN NUMBER)
+	IS
+
+
+	BEGIN
+	
+	INSERT INTO MYGRADE (ST_ID, KOREAN, ENGLISH, MATH)
+	VALUES (P_ST_ID, P_KOREAN, P_ENGLISH, P_MATH);
+	COMMIT;
+
+	END insert_grade;
+
+
+END st_ctrl;
+
+
+EXEC st_ctrl.disp_grade('S001');
+EXEC st_ctrl.insert_grade('S001',99,99,99);
+
+
+show serveroutput
+set serveroutput on
+
+
+CREATE OR REPLACE TRIGGER mytrigger
+	BEFORE
+	UPDATE ON MYUSER
+	FOR EACH ROW
+	DECLARE
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE('蹂�寃� �� 而щ읆 媛� : ' || :OLD.st_name);
+		DBMS_OUTPUT.PUT_LINE('蹂�寃� �� 而щ읆 媛� : ' || :NEW.st_name);
+ END;
+ 
+set serveroutput on;
+
+update MYUSER
+set
+ST_NAME = '�대���'
+where ST_NAME = '李⑥���';
+ 
+
+
+
+
+CREATE TABLE MYUSER_HIST
+(	"ST_NAME" VARCHAR2(9 BYTE), 
+	"HP" VARCHAR2(13 BYTE), 
+	"SEX" VARCHAR2(1 BYTE), 
+	"ADDRESS" VARCHAR2(100 BYTE), 
+	"ST_ID" VARCHAR2(10 BYTE) 
+)
+
+
+
+create or replace TRIGGER myhist
+	BEFORE
+	UPDATE ON MYUSER
+	FOR EACH ROW
+	DECLARE
+	BEGIN
+		DBMS_OUTPUT.PUT_LINE('蹂�寃� �� 而щ읆 媛� : ' || :OLD.st_name);
+		DBMS_OUTPUT.PUT_LINE('蹂�寃� �� 而щ읆 媛� : ' || :NEW.st_name);
+		
+		INSERT INTO MYUSER_HIST (ST_NAME,HP,SEX,ADDRESS,ST_ID)
+		VALUES (:OLD.ST_NAME,:OLD.HP,:OLD.SEX,:OLD.ADDRESS,:OLD.ST_ID);
+		
+    
+ END;
+ 
+ 
+DELIMITER $$
+CREATE TRIGGER myhist
+
+	AFTER UPDATE
+	ON MYUSER
+	for each row
+begin
+	INSERT INTO MYUSER_HIST (ST_NAME,HP,SEX,ADDRESS,ST_ID)
+	VALUES (OLD.ST_NAME,OLD.HP,OLD.SEX,OLD.ADDRESS,OLD.ST_ID);
+
+END $$
+DELIMITER ;
+ 
+
+ 
+
+
+select to_char(sysdate,'YYYY-MM-DD HH24 MI SS') from dual;
+select 'good' || 'job'  from dual;
+select concat('good','job') from dual;
+
+
+
+
+select u.st_name,u.st_id, u.ADDRESS , nvl(g.KOREAN,0) , nvl2(g.ENGLISH, g.ENGLISH || '' ,'臾댁떆�섏옄') ,decode(g.MATH,null,'臾댁떆�섏옄',g.MATH)
+from 
+MYGRADE g , MYUSER u
+where g.st_id(+) = u.st_id

@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Editorial by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <!-- $function(){} 스크립ㅇ트 위에쓸때-->
+	</head>
+    <body>
+        <!-- ---------------after,before---------------------- -->
+        <p>ㅎㅇ</p>
+        <button id="afterbtn">문장뒤에추가</button>
+        <button id="beforebtn">문장앞에추가</button>
+        <p>---------------------------------------------------------------</p>
+        <!-- ----------------삭제---------------------- -->
+        <p id="1">111111111111111111111111</p>
+        <p id="2">2222222222222222222222222</p>
+        <p id="3">3333333333333333333333333</p>
+
+        <button id="remove">remove 삭제</button>
+        <button id="detach">detach 삭제</button>
+        <button id="empty">empty 삭제</button>
+        <button id="unwrap">unwrap 삭제</button>
+        <p>---------------------------------------------------------------</p>
+        <!-- ----------------------------------------------- -->
+        <p id="container">배열 시작 <br></p>
+        <p>---------------------------------------------------------------</p>
+        <!-- ---------------------------------------------------- -->
+        <div>
+            <button id="btn1">슬라이드 업</button>
+            <div id="up">gggggggggggggggg</div>
+        </div>
+        <div>
+            <button id="btn2">슬라이드 다운</button>
+            <div id="down">ggggggggggggggggg</div>
+        </div>
+        <div>
+            <button id="btn3">슬라이드 토글</button>
+            <div id="toggle">gggggggggggggggggg</div>
+        </div>
+        <p>---------------------------------------------------------------</p>
+        <!-- ----------------------------------------------- -->
+        <p>
+            <button id="btn4">페이드인</button>
+            <button id="btn5">페이드아웃</button>
+            <button id="btn6">페이드인아웃</button>
+        </p>
+        <div id="in" style="display: none;">문장숨겨주세여</div>
+        <div id="out">문장나타내주세여</div>
+        <div id="inout">토글</div>
+        <p>---------------------------------------------------------------</p>
+        <!-- ---------------------------------------------------------------- -->
+        <button id="animation">애니메이션 실행 버튼</button>
+        <div id="anim" style="height: 100px; width: 100px; background-color:rgb(126, 126, 250); color:white;font-size: 10px;">안녕하세여</div>
+        <p id="text"></p>
+        <!-- ------------------------------------------------------------------------- -->
+        <input type="text" id="query">
+        <p id="textkey"></p>
+
+        		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript">
+            // ---------------after,before--------------------
+            var i = 0;
+            $("#afterbtn").on("click",function(){
+                $("p").after("<div>" + (++i) + "번째 문장입니다." +"</div>")
+            });
+
+            var j = 0;
+            $("#beforebtn").on("click",function(){
+                $("p").before("<div>" + (++j) + "번째 문장입니다." + "</div>")
+            });
+
+            // ----------------삭제----------------------
+            $("#remove").on("click", function(){
+                $("p").remove();
+            })
+            $("#detach").on("click", function(){
+                $("p").detach();
+            })
+            $("#empty").on("click", function(){
+                $("p").empty();
+            })
+            $("#unwrap").on("click", function(){
+                $("p").unwrap();
+            })
+            ////////////////배열//////////////////////////////////////////////
+            var arr = [3];
+            arr[0] = 1;
+            arr[1] = 'hi';
+            arr[2] = 3.3;
+            for(var i = 0; i<arr.length; i++){
+                // $("#container").append(arr[i] + "<br>");
+            }
+            var array = new Array();
+            array.push(3);
+            array.push(4);
+            array.push(5);
+            array.pop();
+            for(var i = 0; i<arr.length; i++){
+                // $("#container").append(array[i] + "<br>");
+            }
+            ///////////////// concat ////////////////////////////////////
+            array = array.concat(arr);
+            $("#container").append(array + " ");
+
+            ///////////슬라이드/////////////////////////////////////////////
+            $("#btn1").on("click",function(){
+                $("#up").slideUp();
+            });
+            $("#btn2").on("click",function(){
+                $("#down").slideDown();
+            });
+            $("#down").hide();
+            $("#btn3").on("click",function(){
+                $("#toggle").slideToggle();
+            });
+            ///////////////fadeinout/////////////////////////////////////////////
+            $("#btn4").on("click",function(){
+                $("#in").fadeIn(2000);
+            });
+            $("#btn5").on("click",function(){
+                $("#out").fadeOut(100);
+            });
+            $("#btn6").on("click",function(){
+                $("#inout").fadeToggle();
+            });
+            //////////////////////////////////////////////////////////////
+            $("#animation").on("click",function(){
+                $("#anim").animate({
+                    width:"200px",
+                    height:"200px",
+                    fontSize:"25px",
+                    opacity: 0.1 //점점 투명해지는거
+                },
+                10000,
+                function(){
+                    $("#text").html("애니메이션 효과 실행이 완료되었습니다.");
+                })        
+            });
+            //////////////////////////////////////////////////////////
+            $("#query").keypress(function(e){
+					if((e.keyCode >= 48 && e.keyCode <= 57)){
+						alert("숫자는 입력할 수 없습니다.");
+					}
+                    $("#textkey").text(e.keyCode);
+				});
+                // (e.keyCode >= 96 && e.keyCode <= 105 )||
+			
+            ////////////////////////////////////////////////////
+            var timer = 0;
+            setInterval(function{
+                timer++;
+                $("#timer").text(timer);
+            },1000);
+            </script>		
+    </body>
+</html>
